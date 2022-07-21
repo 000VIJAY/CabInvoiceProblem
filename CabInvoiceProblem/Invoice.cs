@@ -6,6 +6,29 @@ using System.Threading.Tasks;
 
 namespace CabInvoiceProblem
 {
+    public class EnhencedInvoice
+    {
+        public readonly double totalFair = 0,
+                                totalRides = 0,
+                                avg = 0;
+        public EnhencedInvoice(double totalFare, double totalRides)
+        {
+            this.totalFair = totalFare;
+            this.totalRides = totalRides;
+            avg = totalFare / totalRides;
+        }
+    }
+    public class Ride
+    {
+
+        public readonly double km = 0,
+                               min = 0;
+        public Ride(double km, double Minute)
+        {
+            this.km = km;
+            this.min = Minute;
+        }
+    }
     public class Invoice
     {
         public const double RatePerKm = 10,
@@ -23,17 +46,15 @@ namespace CabInvoiceProblem
                 return MinFair;
             }
         }
-        public double MultipleRideFair(double km , double min , int NoOfRide)
+        public EnhencedInvoice MultipleRideFair(List<Ride> rides)
         {
-             double fair = (km * RatePerKm + min * RatePerMin) * NoOfRide;
-            if (fair >= MinFair)
+            double fair = 0;
+            foreach (var ride in rides)
             {
-                return fair;
+                fair += RideFair(ride.km, ride.min);
             }
-            else
-            {
-                return MinFair;
-            }
+            EnhencedInvoice e1 = new EnhencedInvoice(fair, rides.Count);
+            return e1;
         }
     }
 }
