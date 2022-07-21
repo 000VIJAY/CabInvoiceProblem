@@ -1,1 +1,3 @@
-﻿Console.WriteLine("Welcome to cab invoice problem");
+﻿using CabInvoiceProblem;
+Invoice myInv = new Invoice();
+Console.WriteLine(myInv.RideFair(10, 20));
