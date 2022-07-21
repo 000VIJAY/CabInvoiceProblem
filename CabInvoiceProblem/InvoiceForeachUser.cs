@@ -28,7 +28,6 @@ namespace CabInvoiceProblem
             }
             return res;
         }
-
         public void AddRides(int userId, List<Ride> rides)
         {
             List<Ride> invoices = new List<Ride>();

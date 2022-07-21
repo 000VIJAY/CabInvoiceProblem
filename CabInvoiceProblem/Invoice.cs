@@ -20,22 +20,36 @@ namespace CabInvoiceProblem
     }
     public class Ride
     {
-
         public readonly double km = 0,
                                min = 0;
-        public Ride(double km, double Minute)
+        public bool IsPremium = false;
+        public Ride(double km, double Minute , bool isPremium = false)
         {
             this.km = km;
             this.min = Minute;
+            IsPremium = isPremium;
         }
     }
     public class Invoice
     {
         public const double RatePerKm = 10,
                             MinFair = 5,
-                            RatePerMin = 1;
-        public double RideFair(double km , double min)
+                            RatePerMin = 1,
+                            IsPremMinFare = 20, 
+                            IsPremRatePerKm = 15, 
+                            IsPremRatePerMin = 2;
+
+        public double RideFair(double km , double min ,bool IsPremium = false)
         {
+            double RPKM = RatePerKm,
+                   RPM = RatePerMin,
+                   minFare = MinFair;
+            if (IsPremium)
+            {
+                RPKM = IsPremRatePerKm;
+                RPM = IsPremRatePerMin;
+                minFare = IsPremMinFare;
+            }
             double fair = km * RatePerKm + min * RatePerMin;
             if (fair >= MinFair)
             {

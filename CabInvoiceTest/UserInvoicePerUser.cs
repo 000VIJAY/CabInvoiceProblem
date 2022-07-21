@@ -38,4 +38,23 @@ namespace CabInvoiceTest
         }
 
     }
+    [TestClass]
+    public class PremiumRides
+    {
+        [TestMethod]
+        public void PremiumRideTest()
+        {
+            Invoice invoice = new Invoice();
+            List<Ride> rides = new List<Ride>()
+        {
+                new Ride(20, 30,true),   //360
+                new Ride(2, 3 ),  //23
+                new Ride(12, 16,true),   //212
+                new Ride(5, 7),          //57
+                new Ride(19, 23,true)    //331
+        };
+            EnhencedInvoice res = invoice.MultipleRideFair(rides);
+            Assert.AreEqual(659, res.totalFair);
+        }
+    }
 }
