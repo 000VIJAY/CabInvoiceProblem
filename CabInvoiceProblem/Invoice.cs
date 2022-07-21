@@ -23,5 +23,17 @@ namespace CabInvoiceProblem
                 return MinFair;
             }
         }
+        public double MultipleRideFair(double km , double min , int NoOfRide)
+        {
+             double fair = (km * RatePerKm + min * RatePerMin) * NoOfRide;
+            if (fair >= MinFair)
+            {
+                return fair;
+            }
+            else
+            {
+                return MinFair;
+            }
+        }
     }
 }
